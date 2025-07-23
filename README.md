@@ -1,7 +1,7 @@
 # Find string in other sheet
 ```js
 function checkInAllSheets(cValue, dValue) {
-  if (!cValue || !dValue) return "EMPTY";
+  if (!cValue || !dValue) return "";
 
   const clean = str => String(str).replace(/[\s\-\/]/g, "");  
   const cleanC = clean(cValue);
@@ -17,7 +17,7 @@ function checkInAllSheets(cValue, dValue) {
     const dRange = sheet.getRange("D3:D100").getValues();
 
     for (let i = 0; i < cRange.length; i++) {
-      if (clean(cRange[i][0]) === cleanC && clean(dRange[i][0]) === cleanD) {
+      if (clean(cRange[i][0]) === cleanC || clean(dRange[i][0]) === cleanD) {
         return "ลงข้อมูลแล้ว";
       }
     }
